@@ -16,11 +16,11 @@
             <a class="navbar-brand" href="#" style="font-size: 24px;">Wegan</a>
             <button data-toggle="collapse" class="navbar-toggler text-dark" data-target="#navcol-1" style="text-align: center;"></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <a href="#" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Blog</a>
-                <a href="#" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Guides</a>
-                <a href="#" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Vegan Places Near You</a>
-                <a class="btn btn-primary ml-auto" role="button" href="#">Sign In</a>
+                <a asp-controller="" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Blog</a>
+                <a asp-controller="" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Guides</a>
+                <a asp-controller="" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Vegan Places Near You</a>
             </div>
+            <partial name="_LoginPartial"/>
         </div>
     </nav>
 </header>
