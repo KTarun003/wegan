@@ -28,7 +28,7 @@ jobs:
       run: |
         dotnet tool install --global dotnet-ef
         dotnet tool restore
-        dotnet ef database update --c DataContext --p MyProj --s MyProjFactory
+        dotnet ef database update --c AppIdentityDbContext --p Core --s Client
       env:
         ASPNETCORE_ENVIRONMENT: Development
 
