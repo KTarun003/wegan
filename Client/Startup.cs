@@ -1,3 +1,4 @@
+using System;
 using Core.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
@@ -20,14 +21,14 @@ namespace Client
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
-		{
-			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlServer(
-					Configuration.GetConnectionString("LocalDb")));
+        {
+            string connectionString = Environment.GetEnvironmentVariable("MYSQLCONNSTR_localdb") ?? Configuration.GetConnectionString("LocalDB");
+            services.AddDbContext<AppIdentityDbContext>(options =>
+				options.UseMySQL(connectionString));
 			services.AddDatabaseDeveloperPageExceptionFilter();
 
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+				.AddEntityFrameworkStores<AppIdentityDbContext>();
 			services.AddControllersWithViews();
 		}
 

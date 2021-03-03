@@ -1,4 +1,6 @@
+using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Identity;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Core.Models
 {
@@ -9,7 +11,8 @@ namespace Core.Models
 		public string Title { get; set; }
 
 		public bool IsApproved { get; set; }
-
+		
+		[DataType("Text")]
 		public string Content { get; set; }
 
 		public string UserId { get; set; }
