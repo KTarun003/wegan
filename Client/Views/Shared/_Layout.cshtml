@@ -11,12 +11,12 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-light navbar-expand bg-light navigation-clean">
+    <nav class="navbar navbar-light navbar-expand navigation-clean" style="background: #73cef0">
         <div class="container">
-            <a class="navbar-brand" href="#" style="font-size: 24px;">Wegan</a>
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="font-size: 24px;">Wegan</a>
             <button data-toggle="collapse" class="navbar-toggler text-dark" data-target="#navcol-1" style="text-align: center;"></button>
             <div class="collapse navbar-collapse" id="navcol-1">
-                <a asp-controller="" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Blog</a>
+                <a asp-controller="Blog" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Blog</a>
                 <a asp-controller="" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Guides</a>
                 <a asp-controller="" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Vegan Places Near You</a>
             </div>
@@ -30,7 +30,7 @@
     </main>
 </div>
 
-<footer class="bg-light footer">
+<footer class="bg-light card-footer">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 text-center text-lg-left my-auto h-100">
@@ -41,7 +41,7 @@
                         <li class="list-inline-item"><span>⋅</span></li>
                         <li class="list-inline-item"><a href="#">Terms of &nbsp;Use</a></li>
                         <li class="list-inline-item"><span>⋅</span></li>
-                        <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+                        <li class="list-inline-item"><a asp-action="Privacy">Privacy Policy</a></li>
                     </ul>
                     <p class="text-muted small mb-4 mb-lg-0">© Wegan-2021. All Rights Reserved.</p>
                 </div>
