@@ -22,9 +22,8 @@ namespace Client
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
         {
-            string connectionString = Environment.GetEnvironmentVariable("SQL_CONNECTION_STRING") ?? Configuration.GetConnectionString("LocalDB");
             services.AddDbContext<AppIdentityDbContext>(options =>
-				options.UseSqlServer(connectionString));
+				options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
 			services.AddDatabaseDeveloperPageExceptionFilter();
 
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)

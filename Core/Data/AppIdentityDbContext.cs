@@ -15,5 +15,6 @@ namespace Core.Data
 		{
 		}
 
+		public DbSet<Post> Posts { get; set; }
 	}
 }
