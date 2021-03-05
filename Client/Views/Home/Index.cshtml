@@ -1,54 +1,53 @@
 ﻿@{
-    ViewData["Title"] = "Home";
+	ViewData["Title"] = "Home";
 }
 
-    <header class="text-center text-white masthead bg-secondary" style="background:no-repeat center center;background-size:cover;">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <h1 class="mb-5">Search for an ingredient to know its whether vegan or not and much more!</h1>
-                </div>
-                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form>
-                        @* TODO: Implement Search*@
-                        <div class="form-row">
-                            <div class="col-12 col-md-9 mb-2 mb-md-0">
-                                <input class="form-control form-control-lg" type="email" placeholder="Enter Ingredient">
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <button class="btn btn-primary btn-block btn-lg" type="submit">Search</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
-    <section class="text-center bg-light features-icons">
-        <h2 class="mb-5" style="color: var(--blue);">People who changed their lifestyle to vegan</h2>
-        <section class="text-center bg-light testimonials">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-4">
-                        <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="~/img/testimonials-1.jpg" asp-append-version="true">
-                            <h5>Margaret E.</h5>
-                            <p class="font-weight-light mb-0">"I have never felt this much positive energy!"</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="~/img/testimonials-2.jpg" asp-append-version="true">
-                            <h5>Fred S.</h5>
-                            <p class="font-weight-light mb-0">"Vegan lifestyle is amazing. I've been vegan since my college."</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
-                        <div class="mx-auto testimonial-item mb-5 mb-lg-0"><img class="rounded-circle img-fluid mb-3" src="~/img/testimonials-3.jpg" asp-append-version="true">
-                            <h5>Sarah W.</h5>
-                            <p class="font-weight-light mb-0">"Being vegan has made me care more for nature."</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
+<header class="text-center text-white masthead bg-secondary" style="background:no-repeat center center;background-size:cover;">
+	<div class="overlay"></div>
+	<div class="container">
+		<div class="row">
+			<div class="col-xl-9 mx-auto">
+				<h1 class="mb-5">Search for an ingredient to know its whether vegan or not and much more!</h1>
+			</div>
+			<div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
+				@* TODO: Implement Search*@
+					<div class="form-row">
+						<div class="col-12 col-md-9 mb-2 mb-md-0">
+							<input class="form-control form-control-lg" type="text" id="ingInput" placeholder="Enter Ingredient">
+						</div>
+						<div class="col-12 col-md-3">
+							<button class="btn btn-primary btn-block btn-lg" id="ingSubmit" type="submit">Search</button>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+</header>
+<section class="text-center bg-light testimonials">
+	<div class="container">
+		<h2 class="mb-5" style="color: var(--blue);">People who changed their lifestyle to vegan</h2>
+		<div class="row">
+			<div class="col-lg-4">
+				<div class="mx-auto testimonial-item mb-5 mb-lg-0">
+					<img class="rounded-circle img-fluid mb-3" src="~/img/testimonials-1.jpg" asp-append-version="true">
+					<h5>Margaret E.</h5>
+					<p class="font-weight-light mb-0">"I have never felt this much positive energy!"</p>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="mx-auto testimonial-item mb-5 mb-lg-0">
+					<img class="rounded-circle img-fluid mb-3" src="~/img/testimonials-2.jpg" asp-append-version="true">
+					<h5>Fred S.</h5>
+					<p class="font-weight-light mb-0">"Vegan lifestyle is amazing. I've been vegan since my college."</p>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="mx-auto testimonial-item mb-5 mb-lg-0">
+					<img class="rounded-circle img-fluid mb-3" src="~/img/testimonials-3.jpg" asp-append-version="true">
+					<h5>Sarah W.</h5>
+					<p class="font-weight-light mb-0">"Being vegan has made me care more for nature."</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

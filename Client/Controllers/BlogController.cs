@@ -1,10 +1,12 @@
 using System;
 using System.Globalization;
+using System.Linq;
 using System.Threading.Tasks;
 using Core.Data;
 using Core.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Client.Controllers
 {
@@ -19,15 +21,19 @@ namespace Client.Controllers
 			_userManager = userManager;
 		}
 		// GET
-		public IActionResult Index(int? pageNumber)
+		public async Task<IActionResult> Index(int? pageNumber)
 		{
-			return View();
+			var posts = from p in _db.Posts select p;
+			return View(await PaginatedList<Post>.CreateAsync(posts.AsNoTracking(),pageNumber ?? 1, 3));
 		}
 		
 		// GET
-		public IActionResult Post()
+		public async Task<ActionResult> Post(int? id)
 		{
-			return View();
+			var post = new Post();
+			if (id == null) return View(post);
+			post = await _db.Posts.FindAsync(id);
+			return View(post);
 		}
 		
 		// GET
