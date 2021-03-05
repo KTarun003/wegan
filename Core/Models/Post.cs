@@ -19,11 +19,12 @@ namespace Core.Models
 
 		public string UserId { get; set; }
 		
-		[Timestamp]
-		public DateTime CreatedAt { get; set; }
+		public string Author { get; set; }
+		
+		public string CreatedAt { get; set; }
 
 		[Timestamp]
-		public DateTime UpdatedAt { get; set; }
+		public byte[] UpdatedAt { get; set; }
 
 		public IdentityUser User { get; set; }
 	}
