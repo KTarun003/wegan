@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - wegan
 on:
   push:
     branches:
-      - tarun
+      - tarun, dev
   workflow_dispatch:
 
 jobs:
