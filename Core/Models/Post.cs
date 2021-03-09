@@ -22,10 +22,17 @@ namespace Core.Models
 		public string Author { get; set; }
 		
 		public string CreatedAt { get; set; }
+		
+		public string UpdatedAt { get; set; }
 
-		[Timestamp]
-		public byte[] UpdatedAt { get; set; }
+		public string Type { get; set; }
 
 		public IdentityUser User { get; set; }
+	}
+
+	public enum PostType
+	{
+		Blog,
+		Guide
 	}
 }

@@ -23,7 +23,7 @@ namespace Client.Controllers
 		// GET
 		public async Task<IActionResult> Index(int? pageNumber)
 		{
-			var posts = from p in _db.Posts select p;
+			var posts = from p in _db.Posts where p.IsApproved && p.Type.Equals(PostType.Blog.ToString()) select p;
 			return View(await PaginatedList<Post>.CreateAsync(posts.AsNoTracking(),pageNumber ?? 1, 3));
 		}
 		
@@ -52,7 +52,9 @@ namespace Client.Controllers
 			if (ModelState.IsValid && post.Author != null)
 			{
 				post.CreatedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+				post.UpdatedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
 				post.IsApproved = false;
+				post.Type = PostType.Blog.ToString();
 				post.User = await _userManager.FindByNameAsync(post.Author);
 				await _db.Posts.AddAsync(post);
 				await _db.SaveChangesAsync();
