@@ -1,11 +1,10 @@
-@model string
+@model Ingredient
 
 @{
 	ViewBag.Title = "Ingredient Search";
 	Layout = "_Layout";
-	string ingredient = ViewBag.ingredient;
 }
 
 <h2>Ingredient Search</h2>
 
-<h3> You searched for : @ingredient</h3>
+<h3> You searched for : @Model.Name</h3>

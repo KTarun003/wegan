@@ -20,7 +20,7 @@ namespace Client.Controllers
 
 		public IActionResult Index()
 		{
-			return View();
+			return View(new Ingredient());
 		}
 
 		public IActionResult Privacy()
@@ -42,11 +42,12 @@ namespace Client.Controllers
         {
             return View();
         }
-
-        public IActionResult Search([FromRoute]string ingredient)
+		
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Search([Bind("Name")] Ingredient ingredient)
         {
-	        ViewBag.ingredient = ingredient;
-	        return View();
+	        return View(ingredient);
         }
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

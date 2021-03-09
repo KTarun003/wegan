@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Data;
 using Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,7 @@ namespace Client.Controllers
 		// POST: Posts/Create
 		// To protect from overposting attacks, enable the specific properties you want to bind to.
 		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[Authorize]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Create([Bind("Title,TagLine,Content,Author")] Post post)
