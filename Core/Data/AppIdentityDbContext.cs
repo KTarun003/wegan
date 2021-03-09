@@ -16,5 +16,9 @@ namespace Core.Data
 		}
 
 		public DbSet<Post> Posts { get; set; }
+
+		public DbSet<Home> Home { get; set; }
+
+		public DbSet<Testimonial> Testimonials { get; set; }
 	}
 }

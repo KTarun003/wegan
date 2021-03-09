@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Core.Data;
 using Core.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -23,7 +24,7 @@ namespace Client.Controllers
 		// GET
 		public async Task<IActionResult> Index(int? pageNumber)
 		{
-			var posts = from p in _db.Posts select p;
+			var posts = from p in _db.Posts where p.IsApproved && p.Type.Equals(PostType.Blog.ToString()) select p;
 			return View(await PaginatedList<Post>.CreateAsync(posts.AsNoTracking(),pageNumber ?? 1, 3));
 		}
 		
@@ -45,6 +46,7 @@ namespace Client.Controllers
 		// POST: Posts/Create
 		// To protect from overposting attacks, enable the specific properties you want to bind to.
 		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+		[Authorize]
 		[HttpPost]
 		[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Create([Bind("Title,TagLine,Content,Author")] Post post)
@@ -52,7 +54,9 @@ namespace Client.Controllers
 			if (ModelState.IsValid && post.Author != null)
 			{
 				post.CreatedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
+				post.UpdatedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
 				post.IsApproved = false;
+				post.Type = PostType.Blog.ToString();
 				post.User = await _userManager.FindByNameAsync(post.Author);
 				await _db.Posts.AddAsync(post);
 				await _db.SaveChangesAsync();
