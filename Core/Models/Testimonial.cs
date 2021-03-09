@@ -1,6 +1,6 @@
 namespace Core.Models
 {
-	public class Testimonials
+	public class Testimonial
 	{
 		public int Id { get; set; }
 
