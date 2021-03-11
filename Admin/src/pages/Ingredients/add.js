@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import PageTitle from "../../components/pageTitle";
-class Home extends Component {
+
+class AddIngredient extends Component {
 	render() {
 		return (
 			<div className="app-main__inner">
-				<PageTitle title="Dashboard" />
+				<PageTitle title="Add Ingredient" />
 			</div>
-
 		);
 	}
 }
 
-export default Home;
+export default AddIngredient;

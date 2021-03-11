@@ -1,33 +1,57 @@
-import Navbar from "./components/navbar";
+import Sidebar from "./components/sidebar";
 import Home from "./pages/Home";
-import Blog from "./pages/Blog";
-import Ingredients from "./pages/Ingredients";
-import Places from "./pages/Places";
+import ListBlogs from "./pages/Blog/list";
+import AddBlog from "./pages/Blog/add";
+import ListGuides from "./pages/Guides/list";
+import AddGuide from "./pages/Guides/add";
+import ListPlaces from "./pages/Places/list";
+import AddPlace from "./pages/Places/add";
+import ListIngredients from "./pages/Ingredients/list";
+import AddIngredient from "./pages/Ingredients/add";
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
 
 class App extends Component {
 	render() {
 		return (
-			<Router>
-				<div>
-					<Navbar />
-					<Switch>
-						<Route path="/blog">
-							<Blog />
-						</Route>
-						<Route path="/ingredients">
-							<Ingredients />
-						</Route>
-						<Route path="/places">
-							<Places />
-						</Route>
-						<Route path="/">
-							<Home />
-						</Route>
-					</Switch>
+			<BrowserRouter>
+				<div className="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
+					<div className="app-main">
+						<Sidebar />
+						<div className="app-main__outer">
+							<Switch>
+								<Route path="/addBlog">
+									<AddBlog />
+								</Route>
+								<Route path="/addGuide">
+									<AddGuide />
+								</Route>
+								<Route path="/addIngredient">
+									<AddIngredient />
+								</Route>
+								<Route path="/addPlace">
+									<AddPlace />
+								</Route>
+								<Route path="/listGuides">
+									<ListGuides />
+								</Route>
+								<Route path="/listBlogs">
+									<ListBlogs />
+								</Route>
+								<Route path="/listIngredients">
+									<ListIngredients />
+								</Route>
+								<Route path="/listPlaces">
+									<ListPlaces />
+								</Route>
+								<Route path="/">
+									<Home />
+								</Route>
+							</Switch>
+						</div>
+					</div>
 				</div>
-			</Router>
+			</BrowserRouter>
 
 		);
 	}
