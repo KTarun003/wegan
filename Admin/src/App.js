@@ -4,12 +4,14 @@ import ListBlogs from "./pages/Blog/list";
 import AddBlog from "./pages/Blog/add";
 import ListGuides from "./pages/Guides/list";
 import AddGuide from "./pages/Guides/add";
-import ListPlaces from "./pages/Places/list";
-import AddPlace from "./pages/Places/add";
+// import ListPlaces from "./pages/Places/list";
+// import AddPlace from "./pages/Places/add";
 import ListIngredients from "./pages/Ingredients/list";
 import AddIngredient from "./pages/Ingredients/add";
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import ComingSoon from "./components/comingSoon";
 
 class App extends Component {
 	render() {
@@ -30,7 +32,7 @@ class App extends Component {
 									<AddIngredient />
 								</Route>
 								<Route path="/addPlace">
-									<AddPlace />
+									<ComingSoon />
 								</Route>
 								<Route path="/listGuides">
 									<ListGuides />
@@ -42,17 +44,19 @@ class App extends Component {
 									<ListIngredients />
 								</Route>
 								<Route path="/listPlaces">
-									<ListPlaces />
+									<ComingSoon />
+								</Route>
+								<Route path="/home">
+									<Home />
 								</Route>
 								<Route path="/">
-									<Home />
+									<Dashboard />
 								</Route>
 							</Switch>
 						</div>
 					</div>
 				</div>
 			</BrowserRouter>
-
 		);
 	}
 }

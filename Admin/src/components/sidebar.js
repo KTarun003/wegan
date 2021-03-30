@@ -42,9 +42,15 @@ class Sidebar extends Component {
 						<ul className="vertical-nav-menu">
 							<li className="app-sidebar__heading">Dashboard</li>
 							<li>
-								<Link to="/" className="mm-active">
+								<Link to="/">
 									<i className="metismenu-icon pe-7s-rocket"></i>
 									Main Dashboard
+								</Link>
+							</li>
+							<li>
+								<Link to="/home" >
+									<i className="metismenu-icon pe-7s-rocket"></i>
+									Home Page
 								</Link>
 							</li>
 							<li className="app-sidebar__heading">Add Items</li>
