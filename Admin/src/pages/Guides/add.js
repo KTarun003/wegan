@@ -1,29 +1,60 @@
 import React, {Component} from 'react';
 import PageTitle from "../../components/pageTitle";
 import CKEditor from "ckeditor4-react";
+import Editor from "../../components/editor";
 
 class AddGuide extends Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			title:"",
+			tagLine:"",
+			content:"",
+			author:"Admin"
+		}
+
+		this.handleChange = this.handleChange.bind(this);
+		this.handleContent = this.handleContent.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
+	}
+
+	handleContent(content){
+		this.setState({content:content})
+	}
+
+	handleChange(event){
+		let nam = event.target.name;
+		let val = event.target.value;
+		this.setState({[nam]: val});
+	}
+
+	handleSubmit(event){
+		event.preventDefault();
+		console.log(this.state);
+		alert("The Guide has been created");
+	}
+
 	render() {
 		return (
 			<div className="app-main__inner">
 				<PageTitle title="Add Guide" />
-				<form>
+				<form onSubmit={this.handleSubmit}>
 					<div className="position-relative row form-group">
 						<label htmlFor="Name" className="col-sm-2 col-form-label">Title</label>
 						<div className="col-sm-10">
-							<input id="Title" placeholder="Enter Title" type="text" className="form-control"/>
+							<input name="title" placeholder="Enter Title" type="text" className="form-control" value={this.state.title} onChange={this.handleChange}/>
 						</div>
 					</div>
 					<div className="position-relative row form-group">
 						<label htmlFor="address" className="col-sm-2 col-form-label">Tag Line</label>
 						<div className="col-sm-10">
-							<input id="tagLine" placeholder="Enter Tag Line" type="text" className="form-control" />
+							<input name="tagLine" placeholder="Enter Tag Line" type="text" className="form-control" value={this.state.tagLine} onChange={this.handleChange}/>
 						</div>
 					</div>
 					<div className="position-relative row form-group">
-						<label htmlFor="phone" className="col-sm-2 col-form-label">Content</label>
+						<label className="col-sm-2 col-form-label">Content</label>
 						<div className="col-sm-10">
-							<CKEditor data="" className="form-control"/>
+							<Editor content={this.state.content} changeContent={this.handleContent} className="form-control" />
 						</div>
 					</div>
 					<div className="position-relative row form-check">

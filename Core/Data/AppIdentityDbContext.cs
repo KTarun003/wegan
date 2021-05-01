@@ -20,5 +20,7 @@ namespace Core.Data
 		public DbSet<Home> Home { get; set; }
 
 		public DbSet<Testimonial> Testimonials { get; set; }
+
+		public DbSet<Ingredient> Ingredients { get; set; }
 	}
 }

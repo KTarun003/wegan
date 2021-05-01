@@ -6,8 +6,8 @@ import ListGuides from "./pages/Guides/list";
 import AddGuide from "./pages/Guides/add";
 // import ListPlaces from "./pages/Places/list";
 // import AddPlace from "./pages/Places/add";
-import ListIngredients from "./pages/Ingredients/list";
-import AddIngredient from "./pages/Ingredients/add";
+// import ListIngredients from "./pages/Ingredients/list";
+// import AddIngredient from "./pages/Ingredients/add";
 import React, {Component} from 'react';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
@@ -29,7 +29,7 @@ class App extends Component {
 									<AddGuide />
 								</Route>
 								<Route path="/addIngredient">
-									<AddIngredient />
+									<ComingSoon />
 								</Route>
 								<Route path="/addPlace">
 									<ComingSoon />
@@ -41,7 +41,7 @@ class App extends Component {
 									<ListBlogs />
 								</Route>
 								<Route path="/listIngredients">
-									<ListIngredients />
+									<ComingSoon />
 								</Route>
 								<Route path="/listPlaces">
 									<ComingSoon />

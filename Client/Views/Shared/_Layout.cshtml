@@ -12,10 +12,12 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-light navbar-expand navigation-clean" style="background: #73cef0">
-        <div class="container">
+    <nav class="navbar navbar-light navbar-expand-md navigation-clean" style="background: #73cef0">
+        <div class="container-fluid">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="font-size: 24px;">WE-gan : peace,love and vegan!</a>
-            <button data-toggle="collapse" class="navbar-toggler text-dark" data-target="#navcol-1" style="text-align: center;"></button>
+            <button data-toggle="collapse" class="navbar-toggler text-dark" data-target="#navcol-1" style="text-align: center;">
+                <span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span>
+            </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <a asp-controller="Blog" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Blog</a>
                 <a asp-controller="Guides" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Guides</a>

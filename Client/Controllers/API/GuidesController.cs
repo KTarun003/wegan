@@ -45,10 +45,8 @@ namespace Client.Controllers.API
 		// To protect from overposting attacks, enable the specific properties you want to bind to.
 		// For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> CreateGuide([Bind("Title,TagLine,Content,Author")] Post post)
+		public async Task<IActionResult> CreateGuide(Post post)
 		{
-			
 			post.CreatedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
 			post.UpdatedAt = DateTime.Now.ToString(CultureInfo.InvariantCulture);
 			post.IsApproved = false;
