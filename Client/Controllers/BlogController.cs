@@ -14,9 +14,9 @@ namespace Client.Controllers
 	public class BlogController : Controller
 	{
 		private readonly AppIdentityDbContext _db;
-		private readonly UserManager<IdentityUser> _userManager;
+		private readonly UserManager<AppUser> _userManager;
 
-		public BlogController(AppIdentityDbContext db, UserManager<IdentityUser> userManager)
+		public BlogController(AppIdentityDbContext db, UserManager<AppUser> userManager)
 		{
 			_db = db;
 			_userManager = userManager;

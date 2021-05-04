@@ -10,7 +10,7 @@ using Core.Models;
 
 namespace Client.Controllers.API
 {
-    [Route("api/[controller]")]
+    [Route("api/ingridients")]
     [ApiController]
     public class IngredientsController : ControllerBase
     {

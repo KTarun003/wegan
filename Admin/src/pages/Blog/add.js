@@ -30,6 +30,13 @@ class AddBlog extends Component {
 	handleSubmit(event){
 		event.preventDefault();
 		console.log(this.state);
+		fetch('https://localhost:5001/api/blogs', {
+			method: 'post',
+			headers: {'Content-Type': 'application/json'},
+			body: JSON.stringify(this.state)
+		})
+			.then(r => console.log(r))
+			.catch(err => console.log(err));
 		alert("The Blog has been created");
 	}
 
