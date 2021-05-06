@@ -57,7 +57,13 @@ namespace Client.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Search([Bind("Name")] Ingredient ingredient)
         {
-	        return View(ingredient);
+            ingredient.IsVegan = false;
+            foreach (var item in _db.Ingredients.ToList())
+            {
+                if (item.Name.Equals(ingredient.Name)) 
+                    ingredient = item;
+            }
+            return View(ingredient);
         }
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

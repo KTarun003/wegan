@@ -78,7 +78,8 @@ namespace Client.Controllers.API
         [HttpPost]
         public async Task<ActionResult<Ingredient>> PostIngredient(Ingredient ingredient)
         {
-            _context.Ingredients.Add(ingredient);
+            ingredient.Id = Guid.NewGuid().ToString();
+            await _context.Ingredients.AddAsync(ingredient);
             try
             {
                 await _context.SaveChangesAsync();
