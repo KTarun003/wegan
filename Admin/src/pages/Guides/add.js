@@ -2,74 +2,31 @@ import React, {Component} from 'react';
 import PageTitle from "../../components/pageTitle";
 import CKEditor from "ckeditor4-react";
 import Editor from "../../components/editor";
+import PostForm from "../../components/postForm";
 
 class AddGuide extends Component {
-	constructor(props){
-		super(props);
-		this.state = {
-			title:"",
-			tagLine:"",
-			content:"",
-			author:"Admin"
-		}
-
-		this.handleChange = this.handleChange.bind(this);
-		this.handleContent = this.handleContent.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
-	}
-
-	handleContent(content){
-		this.setState({content:content})
-	}
-
-	handleChange(event){
-		let nam = event.target.name;
-		let val = event.target.value;
-		this.setState({[nam]: val});
-	}
-
-	handleSubmit(event){
-		event.preventDefault();
-		console.log(this.state);
+	handleSubmit(data){
+		console.log(data);
 		fetch('https://localhost:5001/api/guides', {
 			method: 'post',
 			headers: {'Content-Type': 'application/json'},
-			body: JSON.stringify(this.state)
+			body: JSON.stringify(data)
 		})
-			.then(r => console.log(r))
-			.catch(err => console.log(err));
-		alert("The Guide has been created");
+			.then(r => {
+				console.log(r);
+				alert("The Guide has been created");
+			})
+			.catch(err => {
+				console.log(err);
+				alert("There is some Error Creating Post");
+			});
 	}
 
 	render() {
 		return (
 			<div className="app-main__inner">
 				<PageTitle title="Add Guide" />
-				<form onSubmit={this.handleSubmit}>
-					<div className="position-relative row form-group">
-						<label htmlFor="Name" className="col-sm-2 col-form-label">Title</label>
-						<div className="col-sm-10">
-							<input name="title" placeholder="Enter Title" type="text" className="form-control" value={this.state.title} onChange={this.handleChange}/>
-						</div>
-					</div>
-					<div className="position-relative row form-group">
-						<label htmlFor="address" className="col-sm-2 col-form-label">Tag Line</label>
-						<div className="col-sm-10">
-							<input name="tagLine" placeholder="Enter Tag Line" type="text" className="form-control" value={this.state.tagLine} onChange={this.handleChange}/>
-						</div>
-					</div>
-					<div className="position-relative row form-group">
-						<label className="col-sm-2 col-form-label">Content</label>
-						<div className="col-sm-10">
-							<Editor content={this.state.content} changeContent={this.handleContent} className="form-control" />
-						</div>
-					</div>
-					<div className="position-relative row form-check">
-						<div className="col-sm-10 offset-sm-2">
-							<button className="btn btn-primary" id="btn-submit-Monthly">Submit</button>
-						</div>
-					</div>
-				</form>
+				<PostForm submit={this.handleSubmit} />
 			</div>
 		);
 	}
