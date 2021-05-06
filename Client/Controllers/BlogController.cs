@@ -7,6 +7,7 @@ using Core.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
 
 namespace Client.Controllers
@@ -24,7 +25,7 @@ namespace Client.Controllers
 		// GET
 		public async Task<IActionResult> Index(int? pageNumber)
 		{
-			var posts = from p in _db.Posts where p.IsApproved && p.Type.Equals(PostType.Blog.ToString()) select p;
+			var posts = from p in _db.Posts orderby p.Title where p.IsApproved && p.Type.Equals(PostType.Blog.ToString()) select p ;
 			return View(await PaginatedList<Post>.CreateAsync(posts.AsNoTracking(),pageNumber ?? 1, 3));
 		}
 		

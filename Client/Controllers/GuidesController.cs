@@ -23,7 +23,7 @@ namespace Client.Controllers
 		// GET
 		public async Task<IActionResult> Index(int? pageNumber)
 		{
-			var posts = from p in _db.Posts where p.IsApproved && p.Type.Equals(PostType.Guide.ToString()) select p;
+			var posts = from p in _db.Posts orderby p.Title where p.IsApproved && p.Type.Equals(PostType.Guide.ToString()) select p;
 			return View(await PaginatedList<Post>.CreateAsync(posts.AsNoTracking(),pageNumber ?? 1, 3));
 		}
 		
