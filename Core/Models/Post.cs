@@ -30,9 +30,10 @@ namespace Core.Models
 		public IdentityUser User { get; set; }
 	}
 
-	public enum PostType
-	{
+    public enum PostType
+    {
 		Blog,
 		Guide
-	}
+    }
+
 }
