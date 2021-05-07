@@ -29,7 +29,13 @@ namespace Client.Controllers.API
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Post>>> GetPosts()
         {
-            return await _context.Posts.ToListAsync();
+            var posts = new HashSet<Post>();
+            foreach (Post item in (await _context.Posts.ToListAsync()).Where(item => item.Type.Equals(PostType.Guide.ToString()) && item.IsApproved))
+            {
+                posts.Add(item);
+            }
+
+            return posts;
         }
 
         // GET: api/Guides/5
