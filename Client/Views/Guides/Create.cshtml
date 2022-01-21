@@ -1,0 +1,32 @@
+@model Post
+@{
+	ViewBag.Title = "Create Guide";
+	Layout = "_Layout";
+}
+
+<div class="row">
+	<form class="col-md-9" asp-action="Create" method="post">
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<div class="form-group">
+			<label asp-for="Title" class="control-label"></label>
+			<input asp-for="Title" name="Title" class="form-control" />
+			<span asp-validation-for="Title" class="text-danger"></span>
+		</div>
+		<div class="form-group">
+			<label asp-for="TagLine" class="control-label"></label>
+			<input asp-for="TagLine" class="form-control" />
+			<span asp-validation-for="TagLine" class="text-danger"></span>
+		</div>
+		<label asp-for="Content" class="control-label"></label>
+		<textarea asp-for="Content" name="Content" id="Content" ></textarea>
+		<script type="text/javascript">CKEDITOR.replace('Content');</script>
+		<input asp-for="Author" type="hidden" value="@User.Identity.Name">
+		<div class="form-group">
+			<input id="submit" type="submit" value="Create" class="btn btn-primary" style="margin: 5px" />
+		</div>
+	</form>
+</div>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>

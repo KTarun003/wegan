@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>@ViewData["Title"] - Wegan</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css"/>
+    <link rel="stylesheet" href="~/css/bootstrap.min.css"/>
+</head>
+<body>
+<header>
+    <nav class="navbar navbar-light navbar-expand navigation-clean" style="background: #73cef0">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index" style="font-size: 24px;">Wegan</a>
+            <button data-toggle="collapse" class="navbar-toggler text-dark" data-target="#navcol-1" style="text-align: center;"></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <a asp-controller="Blog" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Blog</a>
+                <a asp-controller="" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Guides</a>
+                <a asp-controller="" asp-action="Index" style="color: var(--dark);font-size: 22px;margin: 5px;padding: 5px;">Vegan Places Near You</a>
+            </div>
+            <partial name="_LoginPartial"/>
+        </div>
+    </nav>
+</header>
+<div class="container">
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+</div>
+
+<footer class="bg-light card-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 text-center text-lg-left my-auto h-100">
+                    <ul class="list-inline mb-2">
+                        <li class="list-inline-item"><a asp-action="About">About</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a asp-action="Contact">Contact</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a asp-action="Terms">Terms of &nbsp;Use</a></li>
+                        <li class="list-inline-item"><span>⋅</span></li>
+                        <li class="list-inline-item"><a asp-action="Privacy">Privacy Policy</a></li>
+                    </ul>
+                    <p class="text-muted small mb-4 mb-lg-0">© Wegan-2021. All Rights Reserved.</p>
+                </div>
+                <div class="col-lg-6 text-center text-lg-right my-auto h-100">
+                    <ul class="list-inline mb-0">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook fa-2x fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter fa-2x fa-fw"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-instagram fa-2x fa-fw"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,17 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Core.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using Client.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Npgsql;
 
 namespace Client
 {
@@ -26,19 +22,38 @@ namespace Client
 
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
-		{
-			services.AddDbContext<ApplicationDbContext>(options =>
-				options.UseSqlite(
-					Configuration.GetConnectionString("DefaultConnection")));
+        {
+            var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            var databaseUri = new Uri(databaseUrl);
+            var userInfo = databaseUri.UserInfo.Split(':');
+
+            var builder = new NpgsqlConnectionStringBuilder
+            {
+                Host = databaseUri.Host,
+                Port = databaseUri.Port,
+                Username = userInfo[0],
+                Password = userInfo[1],
+                Database = databaseUri.LocalPath.TrimStart('/'),
+				SslMode = SslMode.Require,
+				TrustServerCertificate = true
+            };
+			services.AddDbContext<AppIdentityDbContext>(options =>
+				options.UseNpgsql(builder.ConnectionString));
 			services.AddDatabaseDeveloperPageExceptionFilter();
 
 			services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+				.AddEntityFrameworkStores<AppIdentityDbContext>();
 			services.AddControllersWithViews();
+			services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                    .AllowAnyHeader()
+                    .AllowAnyMethod();
+            }));
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider serviceProvider)
 		{
 			if (env.IsDevelopment())
 			{
@@ -52,6 +67,12 @@ namespace Client
 				app.UseHsts();
 			}
 
+			if (env.IsProduction())
+			{
+				using var context = serviceProvider.GetService<AppIdentityDbContext>();
+				context?.Database.Migrate();
+			}
+
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
 
@@ -59,7 +80,7 @@ namespace Client
 
 			app.UseAuthentication();
 			app.UseAuthorization();
-
+            app.UseCors("MyPolicy");
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(

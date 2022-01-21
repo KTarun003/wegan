@@ -1,0 +1,21 @@
+@model Post
+@{
+	ViewBag.Title = Model.Title;
+	Layout = "_Layout";
+}
+<br />
+
+<div class="post-preview">
+	<h2 class="post-title">@Model.Title</h2>
+	<p class="post-meta">@Model.TagLine - @Model.Author on @Model.CreatedAt</p>
+</div>
+
+<article>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10 col-lg-8 mx-auto">
+				@Html.Raw(@Model.Content)
+			</div>
+		</div>
+	</div>
+</article>

@@ -1,0 +1,20 @@
+@model Ingredient
+
+@{
+	ViewBag.Title = "Ingredient Search";
+	Layout = "_Layout";
+}
+
+<h2>Ingredient Search</h2>
+<hr>
+
+<h3> You searched for : @Model.Name</h3>
+
+<br>
+@if (Model.IsVegan) {
+    <h4>The ingredient you searched for is Vegan.</h4>
+}
+else{
+    <h4>Sorry . Didn't Find the ingredient in our database!</h4>
+    <p> We are continously adding ingredients to our database</p>
+}
