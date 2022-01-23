@@ -34,8 +34,7 @@ namespace Client
                 Username = userInfo[0],
                 Password = userInfo[1],
                 Database = databaseUri.LocalPath.TrimStart('/'),
-                // TODO: Remove this before commit
-                //SslMode = SslMode.Require,
+                SslMode = SslMode.Require,
                 TrustServerCertificate = true
             };
 			services.AddDbContext<AppIdentityDbContext>(options =>
