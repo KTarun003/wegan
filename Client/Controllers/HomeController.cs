@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Core.Data;
 using Core.Models;
@@ -57,12 +58,7 @@ namespace Client.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Search([Bind("Name")] Ingredient ingredient)
         {
-            ingredient.IsVegan = false;
-            foreach (var item in _db.Ingredients.ToList())
-            {
-                if (item.Name.Equals(ingredient.Name)) 
-                    ingredient = item;
-            }
+            ingredient.IsVegan = false;        
             return View(ingredient);
         }
 

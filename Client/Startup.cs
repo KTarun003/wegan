@@ -34,8 +34,9 @@ namespace Client
                 Username = userInfo[0],
                 Password = userInfo[1],
                 Database = databaseUri.LocalPath.TrimStart('/'),
-				SslMode = SslMode.Require,
-				TrustServerCertificate = true
+                // TODO: Remove this before commit
+                //SslMode = SslMode.Require,
+                TrustServerCertificate = true
             };
 			services.AddDbContext<AppIdentityDbContext>(options =>
 				options.UseNpgsql(builder.ConnectionString));
